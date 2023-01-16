@@ -18,6 +18,7 @@ import 'package:loono/ui/screens/find_doctor/no_permissions_screen.dart';
 import 'package:loono/ui/screens/force_update.dart';
 import 'package:loono/ui/screens/general_practicioner_achievement.dart';
 import 'package:loono/ui/screens/gynecology_achievement.dart';
+import 'package:loono/ui/screens/hospital/find_hospital_screen.dart';
 import 'package:loono/ui/screens/logout.dart';
 import 'package:loono/ui/screens/main/main_screen.dart';
 import 'package:loono/ui/screens/main/pre_auth/continue_onboarding_form.dart';
@@ -91,7 +92,7 @@ const _appStartUpRouter = AutoRoute<void>(
   ],
 );
 
-/// Only Onboarding Form, Find a Doctor and About Health screens are accessible.
+/// Only Onboarding Form, Find a Doctor, Find a Hospital and About Health screens are accessible.
 const _preAuthRoutes = <AutoRoute>[
   _preAuthMainScreenRouter,
   AutoRoute<void>(page: IntroCarouselScreen, path: 'intro-carousel'),
@@ -125,6 +126,7 @@ const _postAuthRouter = AutoRoute<void>(
           transitionsBuilder: _preventionTransition,
         ),
         ..._findDoctorRoutes,
+        _findHospitalRoute,
         _aboutHealthRoute,
       ],
     ),
@@ -142,6 +144,7 @@ const _preAuthMainScreenRouter = AutoRoute<void>(
   children: [
     _preAuthPreventionRouter,
     ..._findDoctorRoutes,
+    _findHospitalRoute,
     _aboutHealthRoute,
   ],
 );
@@ -163,6 +166,7 @@ const _allowNotificationRoute = CustomRoute<void>(
   path: 'allow-notifications',
   transitionsBuilder: _onboardingTransition,
 );
+const _findHospitalRoute = AutoRoute<void>(page: FindHospitalScreen, path: 'find-hospital');
 const _aboutHealthRoute = AutoRoute<void>(page: AboutHealthScreen, path: 'about-health');
 const _forceUpdateRoute = AutoRoute<void>(page: ForceUpdateScreen, path: 'force-update');
 const _badgeOverviewRoute = AutoRoute<void>(page: BadgeOverviewScreen, path: 'badge-overview');

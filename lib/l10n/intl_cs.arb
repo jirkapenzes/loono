@@ -286,6 +286,21 @@
   "@main_menu_item_prevention": {},
   "main_menu_item_find_doc": "Najít lékaře",
   "@main_menu_item_find_doc": {},
+  "main_menu_item_find_hospital": "Nemocnice",
+  "@main_menu_item_find_hospital": {},
+  "main_menu_item_find_hospital_tab1_all": "Všechny",
+  "@main_menu_item_find_hospital_tab1_all": {},
+  "main_menu_item_find_hospital_tab2_favorites": "Oblíbené ({size})",
+  "@main_menu_item_find_hospital_tab2_favorites": {
+    "placeholders": {
+      "size": {
+        "type" : "int"
+      }
+
+    }
+  },
+  "main_menu_item_find_hospital_empty_list": "Seznam je prázdný",
+  "@main_menu_item_find_hospital_empty_list": {},
   "main_menu_item_about_health": "O zdraví",
   "@main_menu_item_about_health": {},
   "action_save": "Uložit",

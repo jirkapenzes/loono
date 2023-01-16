@@ -34,6 +34,7 @@ class _PreAuthMainScreenState extends State<PreAuthMainScreen> {
   static const analyticsTabNames = [
     'PreAuthPreventionTab',
     'PreAuthFindDoctorTab',
+    'PreAuthFindHospitalTab',
     'PreAuthExploreSectionTab'
   ];
 
@@ -82,6 +83,7 @@ class _PreAuthMainScreenState extends State<PreAuthMainScreen> {
         routes: [
           PreAuthPreventionWrapperRoute(forceRoute: widget.overridenPreventionRoute),
           FindDoctorRoute(),
+          const FindHospitalRoute(),
           AboutHealthRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -103,6 +105,11 @@ class _PreAuthMainScreenState extends State<PreAuthMainScreen> {
               ),
               CustomNavigationBarItem(
                 label: context.l10n.main_menu_item_find_doc,
+                iconPath: 'assets/icons/tabs/find_doctor.svg',
+                iconPathActive: 'assets/icons/tabs/find_doctor_active.svg',
+              ),
+              CustomNavigationBarItem(
+                label: context.l10n.main_menu_item_find_hospital,
                 iconPath: 'assets/icons/tabs/find_doctor.svg',
                 iconPathActive: 'assets/icons/tabs/find_doctor_active.svg',
               ),

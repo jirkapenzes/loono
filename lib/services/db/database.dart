@@ -6,6 +6,7 @@ import 'package:loono/helpers/date_without_day.dart';
 import 'package:loono/helpers/type_converters.dart';
 import 'package:loono/models/calendar_event.dart';
 import 'package:loono/models/examination_questionnaire.dart';
+import 'package:loono/models/favorite_hospital.dart';
 import 'package:loono/models/search_result.dart';
 import 'package:loono/models/user.dart';
 import 'package:loono_api/loono_api.dart';
@@ -17,11 +18,13 @@ part 'database.g.dart';
     Users,
     CalendarEvents,
     ExaminationQuestionnaires,
+    FavoriteHospitals
   ],
   daos: [
     UsersDao,
     CalendarEventsDao,
     ExaminationQuestionnairesDao,
+    FavoriteHospitalsDao
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -29,7 +32,7 @@ class AppDatabase extends _$AppDatabase {
       : super(EncryptedExecutor.inDatabaseFolder(path: path, password: password));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration {
@@ -39,6 +42,9 @@ class AppDatabase extends _$AppDatabase {
       },
       onUpgrade: (Migrator m, int from, int to) async {
         flutter.debugPrint('**Moor** migration');
+        if (from < 2) {
+          await m.create(favoriteHospitals);
+        }
       },
     );
   }

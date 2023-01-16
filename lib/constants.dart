@@ -177,4 +177,11 @@ class LoonoFonts {
     fontWeight: FontWeight.w400,
     color: Colors.black,
   );
+
+  static const tabTitle = TextStyle(
+    fontSize: 12,
+    height: 1.5,
+    color: LoonoColors.primary,
+    fontWeight: FontWeight.w700,
+  );
 }

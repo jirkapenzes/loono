@@ -8,9 +8,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:loono/helpers/map_variables.dart';
 import 'package:loono/models/firebase_user.dart';
 import 'package:loono/repositories/healthcare_repository.dart';
+import 'package:loono/repositories/hospital_repository.dart';
 import 'package:loono/router/app_router.gr.dart';
 import 'package:loono/services/auth/auth_service.dart';
 import 'package:loono/services/examinations_service.dart';
+import 'package:loono/services/hospital_service.dart';
 import 'package:loono/services/map_state_sevice.dart';
 import 'package:loono/services/webview_service.dart';
 import 'package:loono/utils/registry.dart';
@@ -57,6 +59,9 @@ class Loono extends StatelessWidget {
             ChangeNotifierProvider<ExaminationsProvider>(create: (_) => ExaminationsProvider()),
             ChangeNotifierProvider<MapStateService>(create: (_) => MapStateService()),
             ChangeNotifierProvider<WebViewProvider>(create: (_) => WebViewProvider()),
+            ChangeNotifierProvider<HospitalService>(
+              create: (_) => HospitalService(repository: registry.get<HospitalRepository>()),
+            )
           ],
           child: MaterialApp.router(
             title: 'Preventivka',

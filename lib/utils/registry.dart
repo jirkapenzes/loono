@@ -21,6 +21,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loono/repositories/calendar_repository.dart';
 import 'package:loono/repositories/examination_repository.dart';
 import 'package:loono/repositories/healthcare_repository.dart';
+import 'package:loono/repositories/hospital_repository.dart';
 import 'package:loono/repositories/user_repository.dart';
 import 'package:loono/router/app_router.gr.dart';
 import 'package:loono/router/guards/check_is_logged_in.dart';
@@ -35,6 +36,7 @@ import 'package:loono/services/secure_storage_service.dart';
 import 'package:loono/utils/app_clear.dart';
 import 'package:loono/utils/app_config.dart';
 import 'package:loono/utils/picture_precaching.dart';
+import 'package:loono/utils/third_party_apis.dart';
 import 'package:loono_api/loono_api.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -222,6 +224,14 @@ Future<void> setup({
     CalendarRepository(
       databaseService: registry.get<DatabaseService>(),
       calendarService: registry.get<CalendarService>(),
+    ),
+  );
+
+  registry.registerSingleton<ThirdPartyApis>(ThirdPartyApis(dio));
+  registry.registerSingleton<HospitalRepository>(
+    HospitalRepository(
+      hospitalsApi: registry.get<ThirdPartyApis>().hospitalsApi,
+      hospitalsDao: registry.get<DatabaseService>().favoriteHospitalsDao,
     ),
   );
 
